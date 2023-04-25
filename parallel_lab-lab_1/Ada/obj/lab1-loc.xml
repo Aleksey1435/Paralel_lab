@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>D:\Paralel_labs\Paralel_lab\parallel_lab-lab_1\Ada\lab1.gpr</vfs_file>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>D:\Paralel_labs\Paralel_lab\parallel_lab-lab_1\Ada\lab1.gpr</vfs_project>
+      <vfs_file>D:\Paralel_labs\Paralel_lab\parallel_lab-lab_1\Ada\src\main.adb</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <vfs_file >G:\Study\Ada\lab1.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >G:\Study\3 #208;#186;#209;#131;#209;#128;#209;#129;\2 #209;#129;#208;#181;#208;#188;#208;#181;#209;#129;#209;#130;#209;#128;\#208;#159;#208;#176;#209;#128;#208;#176;#208;#187;#208;#181;#208;#187;#209;#140;#208;#189;#209;#150; #208;#191;#209;#128;#208;#190;#209;#134;#208;#181;#209;#129;#208;#184;\Ada\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1">
+      <vfs_project >G:\Study\Ada\lab1.gpr</vfs_project>
+      <vfs_file >G:\Study\Ada\src\main.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
