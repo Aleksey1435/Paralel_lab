@@ -1,32 +1,32 @@
-public class Consumer implements Runnable {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Semaphore;
+
+// менеджер
+public class Consumer implements Runnable{
+
     private final int itemNumbers;
     private final Manager manager;
-    private final int id;
-    public Consumer(int itemNumbers, Manager manager,int id) {
+
+    public Consumer(int itemNumbers, Manager manager) {
         this.itemNumbers = itemNumbers;
         this.manager = manager;
-        this.id = id;
+
         new Thread(this).start();
     }
 
     @Override
     public void run() {
-        String item;
-        while (!manager.item_cons.isEmpty()){
+        for(int i = 0; i < itemNumbers; i++){
+            String item;
             try {
                 manager.empty.acquire();
                 Thread.sleep(1000);
                 manager.access.acquire();
-                if(manager.item_cons.isEmpty())
-                {
-                    manager.access.release();
-                    manager.full.release();
-                    break;
-                }
-                manager.item_cons.pop();
+
                 item = manager.storage.get(0);
                 manager.storage.remove(0);
-                System.out.println("Took " + item + " By " + id + " consumer");
+                System.out.println("Споживач забрав предмет № " + item);
 
                 manager.access.release();
                 manager.full.release();
