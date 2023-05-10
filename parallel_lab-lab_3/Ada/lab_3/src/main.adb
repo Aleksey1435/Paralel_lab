@@ -13,45 +13,39 @@ procedure Main is
    Producer_count : Integer := 4;
    Consumer_count : Integer := 4;
 
-   List_prod : List;
-   List_cons : List;
-
    Storage : List;
    Access_Storage : Counting_Semaphore (1, Default_Ceiling);
    Full_Storage   : Counting_Semaphore (Storage_Size, Default_Ceiling);
    Empty_Storage  : Counting_Semaphore (0, Default_Ceiling);
 
    task type Producer is
-      entry Start (Id : in Integer);
+      entry Start (Id,firstInd,finishInd : in Integer);
    end Producer;
 
    task type Consumer is
-      entry Start (Id : in Integer);
+      entry Start (Id,itemNum : in Integer);
    end Consumer;
 
    task body Producer is
       Id : Integer;
+      firstInd  : Integer;
+      finishInd: Integer;
    begin
-      accept Start (Id : in Integer) do
-             Producer.Id := Id;
+      accept Start (Id,firstInd,finishInd : in Integer) do
+         Producer.Id := Id;
+         Producer.firstInd := firstInd;
+         Producer.finishInd := finishInd;
       end Start;
-         while not List_prod.Is_Empty loop
+         for i in firstInd..finishInd loop
 
          Full_Storage.Seize;
          Access_Storage.Seize;
 
-         if List_prod.Is_Empty then
-           Access_Storage.Release;
-           Empty_Storage.Release;
-           exit;
-         end if;
-
          declare
-               item : String := First_Element(List_prod);
+               item : String := i'Img;
          begin
              Storage.Append ("item " & item);
              Put_Line ("Added item " & item & "  Id: " & Id'Img);
-             List_prod.Delete_First;
             end;
 
 
@@ -64,27 +58,22 @@ procedure Main is
 
    task body Consumer is
       Id : Integer;
+      itemNum : Integer;
       begin
-      accept Start (Id : in Integer) do
-             Consumer.Id := Id;
+      accept Start (Id,itemNum : in Integer) do
+         Consumer.Id := Id;
+         Consumer.itemNum := itemNum;
       end Start;
 
-      while not List_cons.Is_Empty loop
+      for i in 1..itemNum loop
          Empty_Storage.Seize;
          Access_Storage.Seize;
-
-         if List_cons.Is_Empty then
-            Access_Storage.Release;
-            Full_Storage.Release;
-            exit;
-         end if;
 
          declare
             item : String := First_Element (Storage);
          begin
               Put_Line ("Took " & item & "  Id: "& id'Img);
          end;
-            List_cons.Delete_First;
             Storage.Delete_First;
 
             Access_Storage.Release;
@@ -102,18 +91,14 @@ procedure Main is
       Arr_cons  : Array(1..cnt_cons) of Consumer;
    begin
       for i in 1..cnt_prod loop
-         Arr_prod(i).Start(i);
+         Arr_prod(i).Start(i,(i - 1) * Item_Numbers / Producer_count,i * Item_Numbers / Producer_count);
       end loop;
 
       for i in 1..cnt_cons loop
-         Arr_cons(i).Start(i);
+         Arr_cons(i).Start(i,i * Item_Numbers / Consumer_count - (i - 1) * Item_Numbers / Consumer_count + 1);
       end loop;
    end Starter;
 
 begin
-for i in 1 .. Item_Numbers loop
-      List_prod.Append(i'Img);
-      List_cons.Append(i'Img);
-   end loop;
    Starter(Producer_count,Consumer_count);
 end Main;

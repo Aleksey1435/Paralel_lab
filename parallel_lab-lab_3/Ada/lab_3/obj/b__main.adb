@@ -348,9 +348,9 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
-   --   G:\Study\Ada\lab_3\obj\main.o
-   --   -LG:\Study\Ada\lab_3\obj\
-   --   -LG:\Study\Ada\lab_3\obj\
+   --   C:\Users\String.Empty\Documents\GitHub\parallel_lab\Ada\lab_3\obj\main.o
+   --   -LC:\Users\String.Empty\Documents\GitHub\parallel_lab\Ada\lab_3\obj\
+   --   -LC:\Users\String.Empty\Documents\GitHub\parallel_lab\Ada\lab_3\obj\
    --   -LC:/gnat/2021/lib/gcc/x86_64-w64-mingw32/10.3.1/adalib/
    --   -static
    --   -lgnarl

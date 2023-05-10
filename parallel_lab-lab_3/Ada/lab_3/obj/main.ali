@@ -42,7 +42,7 @@ RV MAX_TASK_ENTRIES=1
 RV MAX_TASKS=1+
 RV MAX_ENTRY_QUEUE_LENGTH=1+
 
-U main%b		main.adb		03f87224 NE OO SU
+U main%b		main.adb		b690be19 NE OO SU
 W ada%s			ada.ads			ada.ali
 Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
@@ -110,7 +110,7 @@ D interfac.ads		20210520051132 edec285f interfaces%s
 D i-c.ads		20210520051132 d9beded9 interfaces.c%s
 D i-cstrin.ads		20210520051132 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20210520051132 e53d8b8e interfaces.c_streams%s
-D main.adb		20230423213510 f0bf5e10 main%b
+D main.adb		20230510091748 45d7922d main%b
 D system.ads		20210520051136 2ffa5114 system%s
 D s-addima.ads		20210520051132 a1ec9d3a system.address_image%s
 D s-atacco.ads		20210520051132 4c36d12f system.address_to_access_conversions%s
@@ -165,60 +165,67 @@ X 4 a-contai.ads
 16K13*Containers 28e19 28|4r10 5r9
 X 7 a-cidlli.ads
 47k24*Indefinite_Doubly_Linked_Lists 413e50 28|4w21 8r32
-54R9 List<10|43R9> 28|16r16[8] 17r16[8] 19r14[8]
-83V13 Is_Empty{boolean} 28|38s30[8] 43s23[8] 72s27[8] 76s23[8]
-154U14 Append 28|52s22[8] 115s17[8] 116s17[8]
-163U14 Delete_First 28|54s24[8] 87s23[8] 88s21[8]
-195V13 First_Element{string} 28|50s33[8] 83s30[8]
+54R9 List<10|43R9> 28|18r14[8]
+154U14 Append 28|49s22[8]
+163U14 Delete_First 28|79s21[8]
+195V13 First_Element{string} 28|75s30[8]
 X 12 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[7|76]>
 X 19 a-textio.ads
 58K13*Text_IO 725e16 28|1w10 2r9
-506U14*Put_Line 28|53s14 85s15
+506U14*Put_Line 28|50s14 77s15
 X 22 gnat.ads
 34K9*GNAT 57e9 28|1r19 2r18
 X 23 g-semaph.ads
 38K14*Semaphores 97e20 28|1w24 2r23
-40i4*Default_Ceiling{29|101I12} 28|20r44 21r55 22r44
-47W19*Counting_Semaphore 68e26 28|20r21 21r21 22r21
-58Y13 Seize 28|40s23 41s25 73s24 74s25
-63U17 Release 28|44s27 45s26 58s28 59s27 77s28 78s26 90s28 91s26
+40i4*Default_Ceiling{29|101I12} 28|19r44 20r55 21r44
+47W19*Counting_Semaphore 68e26 28|19r21 20r21 21r21
+58Y13 Seize 28|43s23 44s25 71s24 72s25
+63U17 Release 28|54s28 55s27 81s28 82s26
 X 28 main.adb
-7U11*Main 7b11 119l5 119t9
+7U11*Main 7b11 106l5 106t9
 8K12 String_Lists[7|47] 9r8
-11i4 Item_Numbers{integer} 114r15
-12i4 Storage_Size{integer} 21r41
-13i4 Producer_count{integer} 118r12
-14i4 Consumer_count{integer} 118r27
-16r4 List_prod{7|54R9[8]} 38r20 43r13 50r47 54m14 54r14 115m7 115r7
-17r4 List_cons{7|54R9[8]} 72r17 76r13 87m13 87r13 116m7 116r7
-19r4 Storage{7|54R9[8]} 52m14 52r14 83r45 88m13 88r13
-20w4 Access_Storage{23|47W19} 41r10 44r12 58r13 74r10 77r13 90r13
-21w4 Full_Storage{23|47W19} 40r10 78r13 91r13
-22w4 Empty_Storage{23|47W19} 45r12 59r13 73r10
-24T14 Producer 26l8 26e16 32b14 36m14 63l11 63t19 101r41
-25Y13 Start 25>20 35b14 37l11 37t16 105s22
-25i20 Id{integer} 36r29
-28T14 Consumer 30l8 30e16 65b14 69m14 96l11 96t19 102r41
-29Y13 Start 29>20 68b14 70l11 70t16 109s22
-29i20 Id{integer} 69r29
-33i7 Id{integer} 36m23 53r58
-35i21 Id{integer}
-50a16 item{string} 52r40 53r40
-66i7 Id{integer} 69m23 85r52
-68i21 Id{integer}
-83a13 item{string} 85r35
-98U14 Starter 98b14 98>22 98>45 111l8 111t15 118s4
-98i22 num_prod{integer} 99r29
-98i45 num_cons{integer} 100r29
-99i7 cnt_prod{integer} 101r28 104r19
-100i7 cnt_cons{integer} 102r28 108r19
-101a7 Arr_prod(24T14) 105r10
-102a7 Arr_cons(28T14) 109r10
-104i11 i{integer} 105r19 105r28
-108i11 i{integer} 109r19 109r28
-114i5 i{integer} 115r24 116r24
+11i4 Item_Numbers{integer} 96r40 96r74 100r34 100r76
+12i4 Storage_Size{integer} 20r41
+13i4 Producer_count{integer} 96r55 96r89 105r12
+14i4 Consumer_count{integer} 100r49 100r91 105r27
+18r4 Storage{7|54R9[8]} 49m14 49r14 75r45 79m13 79r13
+19w4 Access_Storage{23|47W19} 44r10 54r13 72r10 81r13
+20w4 Full_Storage{23|47W19} 43r10 82r13
+21w4 Empty_Storage{23|47W19} 55r13 71r10
+23T14 Producer 25l8 25e16 31b14 37m10 38m10 39m10 59l11 59t19 92r41
+24Y13 Start 24>20 24>23 24>32 36b14 40l11 40t16 96s22
+24i20 Id{integer} 37r25
+24i23 firstInd{integer} 38r31
+24i32 finishInd{integer} 39r32
+27T14 Consumer 29l8 29e16 61b14 66m10 67m10 87l11 87t19 93r41
+28Y13 Start 28>20 28>23 65b14 68l11 68t16 100s22
+28i20 Id{integer} 66r25
+28i23 itemNum{integer} 67r30
+32i7 Id{integer} 37m19 50r58
+33i7 firstInd{integer} 38m19 41r19
+34i7 finishInd{integer} 39m19 41r29
+36i21 Id{integer}
+36i24 firstInd{integer}
+36i33 finishInd{integer}
+41i14 i{integer} 47r33
+47a16 item{string} 49r40 50r40
+62i7 Id{integer} 66m19 77r52
+63i7 itemNum{integer} 67m19 70r19
+65i21 Id{integer}
+65i24 itemNum{integer}
+70i11 i{integer}
+75a13 item{string} 77r35
+89U14 Starter 89b14 89>22 89>45 102l8 102t15 105s4
+89i22 num_prod{integer} 90r29
+89i45 num_cons{integer} 91r29
+90i7 cnt_prod{integer} 92r28 95r19
+91i7 cnt_cons{integer} 93r28 99r19
+92a7 Arr_prod(23T14) 96r10
+93a7 Arr_cons(27T14) 100r10
+95i11 i{integer} 96r19 96r28 96r31 96r70
+99i11 i{integer} 100r19 100r28 100r30 100r67
 X 29 system.ads
 67M9*Address
 100I12*Any_Priority{integer}
